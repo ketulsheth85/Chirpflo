@@ -9,5 +9,7 @@
 4. Set up database and apply  migrations.
 
 5. Run the python server and celery using below code:
-    python : python3 manage.py runserver
-    celery : celery -A InstaGpt worker -l INFO
+
+## python : python3 manage.py runserver
+
+## celery : celery -A InstaGpt worker -l INFO
