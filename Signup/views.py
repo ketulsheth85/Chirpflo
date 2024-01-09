@@ -164,10 +164,6 @@ class LoginAPI(viewsets.ModelViewSet):
                         if data['type']=="super":
                             if not user.is_superuser:
                                 return Response({'status': status.HTTP_400_BAD_REQUEST,'message': "Admin user needed!"},status=status.HTTP_400_BAD_REQUEST)
-
-                        # elif not user.is_superuser and data['type']!="super":
-                        #     if user.is_superuser:
-                        #         return Response({'status': status.HTTP_400_BAD_REQUEST,'message': "User can't login."},status=status.HTTP_400_BAD_REQUEST)                        
                         token = {}
                         SlidingToken.for_user(user)
                         RefreshToken.for_user(user)
@@ -250,10 +246,6 @@ class ForgetPasswordSendMail(APIView):
                 uidb64 = urlsafe_base64_encode(smart_bytes(user.id))
                 token = PasswordResetTokenGenerator().make_token(user)
                 url="https://chirpflo.com/resetpassword/{0}/{1}".format(uidb64,token)
-                # url="https://intelichat.com.au/resetpassword/{0}/{1}".format(uidb64,token)
-                # url = "http://35.84.212.197/resetpassword/{0}/{1}".format(uidb64,token)
-
-                # url = "http://localhost:3000/resetpassword/{0}/{1}".format(uidb64,token)
                 ctx = {
                     'user':  user.first_name,
                     'email' : "Email :  " + user.email.lower(),
