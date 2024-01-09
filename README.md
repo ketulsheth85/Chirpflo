@@ -10,4 +10,4 @@
 
 5. Run the python server and celery using below code:\
     python : python3 manage.py runserver\
-    celery : celery -A InstaGpt worker -l INFO \
+    celery : celery -A InstaGpt worker -l INFO
